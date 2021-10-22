@@ -53,7 +53,7 @@ app.get("/register", function(req, res) {
 
 app.get("/myProfile", function(req, res) {
   if (req.isAuthenticated()) {
-    res.render("/myProfile");
+    res.render("myProfile");
   } else {
     res.redirect("/");
   }
@@ -75,16 +75,14 @@ app.post("/register", function(req, res) {
 
 });
 
-app.post('/', (req, res) => passport.authenticate('local', { successRedirect: '/register', failureRedirect: '/', })(req, res));
+app.post('/', function(req, res) {
+  
+});
 
 app.get("/logout", function(req, res) {
   req.logout();
   res.redirect("/");
 });
-
-
-
-
 
 app.get("/matching", function(req, res) {
   res.render("matching")
